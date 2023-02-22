@@ -2,4 +2,4 @@
 
 Hi, I'm Keren. 
 
-This is my github portfolio page.
+This is my github portfolio page, Version 1.

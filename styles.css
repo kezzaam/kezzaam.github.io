@@ -48,6 +48,11 @@
   
   a {
     text-decoration: none;
+    color: var(--pale);
+  }
+
+  a:hover {
+    color: var(--medgreen);
   }
   
   img {
@@ -151,6 +156,7 @@
   }
   
   .project-title {
+    color: var(--darkblue);
     font-size: 2rem;
     padding: 2rem 0.5rem;
     background-color: var(--pale);
@@ -166,13 +172,7 @@
   }
 
   .link {
-    color: var(--pale);
     display: block;
-    margin: 5px;
-  }
-
-  .link:hover {
-    color: var(--lightgreen);
   }
   
   button {
