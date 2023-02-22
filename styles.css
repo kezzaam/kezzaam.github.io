@@ -164,6 +164,16 @@
   .project-tile:hover {
     opacity: 70%;
   }
+
+  .link {
+    color: var(--pale);
+    display: block;
+    margin: 5px;
+  }
+
+  .link:hover {
+    color: var(--lightgreen);
+  }
   
   button {
     display: inline-block;
