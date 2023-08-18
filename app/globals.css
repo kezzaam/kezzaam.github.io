@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --darkcerulean: #004E7E;
+  --poseidon: #133955;
+  --yankeesblue: #13303F;
+  --peachcobbler: #FFB181;
+  --lightskyblue: #81CFFF;
+  --brightgrey: #EBECF0;
+  --macaronicheese: #FFB39B;
+}
+
+.body-dark {
+  color: var(--brightgrey);
+  background: radial-gradient(
+    circle at center,
+    var(--poseidon),
+    var(--yankeesblue)
+  );
+}
+
+.body-dark .card {
+  background-color: var(--poseidon);
+  border: 1px solid var(--darkcerulean);
+}
+
+.body-light {
+  color: var(--poseidon);
+  background: radial-gradient(
+    circle at center,
+    var(--peachcobbler),
+    var(--brightgrey),
+  );
+}
+
+.body-light .card {
+  background-color: #ffffff;
+
+}
+
+.body-dark .hover-content {
+  background-color: rgba(19, 57, 85, 0.8);
+}
+
+.body-light .hover-content {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.hovered {
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
+}
+
+.texture {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    mix-blend-mode: multiply;
+    background-repeat: repeat;
+    pointer-events: none;
+    background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png")  }
+
+
+/* page sections - home, resume, portfolio, contact */
+/* section children */
+section.scroll-left > div > * {
+  transform: translateX(-300%);
+  opacity: 0;
+  transition: transform 1s ease, opacity 0.2s ease;
+}
+
+section.scroll-right > div > * {
+  transform: translateX(300%);
+  opacity: 0;
+  transition: transform 1s ease, opacity 0.2s ease;
+}
+
+section.active > div > * {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* accordion */
+#tech div {
+  font-size: 1.4rem;
+}
+
+#tech div svg {
+  font-size: 6rem;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+
+/* small screens */
+/* this rule controls the card gallery and pagination on small screens */
+@media (max-width: 767px) {
+  .reveal {
+    display: block; /* Show the element */
+  }
+
+  .hide {
+    display: none; /* Hide the element */
+  }
+  
+  #tech div svg {
+  font-size: 2.5rem;
+  }
+
+  #tech div {
+    font-size: 0.6rem;
+  }
+}
+
+/* logo cursor flash effect */
+@keyframes flashing {
+  0%, 50% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+.logo:hover, .link:hover {
+    transition: transform 0.5s ease; /* Add transition for smooth motion */  
+  /* Add subtle motion on hover */
+  transform: translateX(2px);
+  cursor: pointer;
+}
+
+.logo:hover span {
+  animation: flashing 2s infinite;
+}
+
+.roll {
+  height:50px;
+  overflow:hidden;
+}
+
+.roll > div > h2 {
+  padding: 0;
+  margin: 0;
+  height:2.81rem;
+  margin-bottom: 2.81rem;
+  display:inline-block;
+}
+
+.roll div:first-child {
+  animation: text-animation 10s infinite;
+}
+
+/* rolling subheadings */
+@keyframes text-animation {
+  0% {margin-top: 0;}
+  10% {margin-top: 0;}
+  20% {margin-top: -5.62rem;}
+  30% {margin-top: -5.62rem;}
+  40% {margin-top: -11.24rem;}
+  60% {margin-top: -11.24rem;}
+  70% {margin-top: -5.62rem;}
+  80% {margin-top: -5.62rem;}
+  90% {margin-top: 0;}
+  100% {margin-top: 0;}
+}
+
+/* Twinkling stars animation */
+@keyframes twinkling {
+  0% {
+    opacity: 0.75;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.star {
+  animation-name: twinkling;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 4s;
+  animation-direction: alternate;
+  animation-delay: var(--delay)s; /* Use the random delay value */
+  box-shadow: 0 0 50px 15px var(--intensewhite)
+}
+
+
+/* Dreamy fade animation */
+@keyframes dreamy {
+  0% {
+    opacity: 0.75;
+    transform: scaleX(-1);
+  }
+  25% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dreamy {
+  animation-name: dreamy;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 4s;
+  animation-direction: alternate;
+  animation-delay: var(--delay)s; /* Use the random delay value */
+  box-shadow: 0 0 50px 15px var(--intensewhite)
+}
