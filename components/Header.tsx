@@ -14,6 +14,14 @@ const mPlus = M_PLUS_1_Code({
 
 export default function Header() {
     const [mode, setMode] = useState('dark')
+    // lifted state for the menu open/closed in Navigation
+    // so that we can render header styles based on it
+    const [menuOpen, setMenuOpen] = useState(false)
+
+    const toggleMenu = () => {
+        // toggle the menu open and closed here
+        setMenuOpen(!menuOpen)
+    }
 
     const toggleDarkMode = () => {
         setMode(prevMode => (prevMode === 'dark' ? 'light' : 'dark'))
@@ -28,16 +36,16 @@ export default function Header() {
     }, [mode])
 
     return (
-        <header className={`w-full fixed flex flex-row items-center py-4 px-2 space-x-2 ${mPlus.className}`}>
+        <header className={`w-full fixed flex flex-row items-center py-4 px-2 space-x-2 ${mPlus.className} z-50 ${menuOpen ? 'dropdown pb-16' : ''}`}>
             {/* Logo */}
             <Link href="#home">
-            <div className="logo text-7xl font-bold">
+            <div className="logo text-6xl md:text-7xl font-bold">
                 <Logo />
             </div>
             </Link>
 
             {/* Navigation */}
-            <Navigation />
+            <Navigation menuOpen={menuOpen} toggleMenu={toggleMenu}/>
 
             {/* Light/dark mode toggle */}
             <button onClick={toggleDarkMode} className="absolute right-6 bg-blue-500 hover:opacity-100 rounded-full p-2">

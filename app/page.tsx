@@ -14,8 +14,15 @@ export default function Home() {
 
   const sectionStyle = "transition-all flex min-w-[100vw] snap-start items-center justify-center overflow-x-scroll"
 
+    // Define a style for the main container to enable vertical scrolling on small screens
+    const mainStyle = `
+    flex overflow-x-scroll snap-x snap-mandatory h-screen z-0
+    ${scrollDirection === 'left' ? 'scroll-left' : 'scroll-right'}
+    ${activeSection === "home" ? "active" : ""}
+  `;
+
   return (
-    <main className="flex overflow-x-scroll snap-x snap-mandatory h-screen">
+    <main className={mainStyle}>
       <section 
         id="home" 
         className={`

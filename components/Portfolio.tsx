@@ -5,6 +5,7 @@ import Slumberjack from './projects/animations/Slumberjack'
 import Spelldeck from './projects/animations/Spelldeck'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import ProjectModal from './projects/ProjectModal'
 
 export default function Portfolio() {
   const projects = [
@@ -18,33 +19,49 @@ export default function Portfolio() {
       github: 'https://github.com/kezzaam/guidinglight',
       bgImage: '/images/nightskydark.jpg',
       techStack: ['NextJS', 'Typescript', 'Tailwind CSS', 'PrismaORM', 'MongoDB', 'NextAuth'],
+      mockup: '/images/guidinglight_mockup.png',
     },
     {
       id: 2,
       title: 'Slumberjack',
       description:
-        'A frontend React application focused on helping users log, track and interpret their dreams over time',
+        'A frontend React application focused on helping users log, track and interpret their dreams over time.',
       display: <Slumberjack />,
       link: '#',
       github: 'https://github.com/kezzaam/slumberjack',
       bgImage: '/images/luciddreaming.jpg',
       techStack: ['NextJS', 'Typescript', 'Tailwind CSS', 'Firebase'],
+      mockup: '/images/slumberjack_mockup.png',
     },
     {
       id: 3,
       title: 'Spelldeck',
       description:
-        'A fun, interactive card deck for referencing Wizarding World spells from the Harry Potter API',
+        'A fun, interactive card deck for referencing Wizarding World spells from the Harry Potter API.',
       display: <Spelldeck />,
       link: '#',
       github: 'https://github.com/kezzaam/spelldeck',
       bgImage: '/images/spelldeck.jpg',
       techStack: ['HTML', 'Javascript', 'CSS', 'Bootstrap', 'Express', 'NodeJS'],
+      mockup: '/images/spelldeck_mockup.png',
     },
   ]
 
   const [hovered, setHovered] = useState(null)
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedProject, setSelectedProject] = useState(null)
+
+  const openModal = (project:any) => {
+    setSelectedProject(project)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setSelectedProject(null)
+    setIsModalOpen(false)
+  }
+
 
   const handleMouseEnter = (projectId: any) => {
     setHovered(projectId)
@@ -64,11 +81,9 @@ export default function Portfolio() {
             key={project.id}
             onMouseEnter={() => handleMouseEnter(project.id)}
             onMouseLeave={handleMouseLeave}
-            className={`card w-[320px] h-[460px] rounded-lg shadow overflow-hidden relative ${
-              project.id === hovered ? 'hovered' : ''
-            } ${
-              index === currentIndex ? 'reveal' : 'hide'
-            }`}
+            className={`card w-[320px] h-[460px] rounded-lg shadow overflow-hidden relative ${project.id === hovered ? 'hovered' : ''
+              } ${index === currentIndex ? 'reveal' : 'hide'
+              }`}
           >
             <div
               className="bg-overlay absolute inset-0 rounded-lg flex items-center justify-center"
@@ -80,7 +95,9 @@ export default function Portfolio() {
             </div>
 
             {hovered === project.id && (
-              <div className="hover-content absolute inset-0 flex flex-col justify-center items-center p-6 text-center">
+              <div className="hover-content absolute inset-0 flex flex-col justify-center items-center p-6 text-center"
+                   onClick={() => openModal(project)} // Open the modal when the card is clicked 
+              >
                 <h5 className="bg-blue-500 bg-rounded-2xl px-4 mb-2 text-2xl font-bold tracking-loose">
                   {project.title}
                 </h5>
@@ -110,14 +127,16 @@ export default function Portfolio() {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`px-4 py-2 rounded-lg ${
-              index === currentIndex ? 'bg-blue-500 bg-opacity-50' : ''
-            }`}
+            className={`px-4 py-2 rounded-lg ${index === currentIndex ? 'bg-blue-500 bg-opacity-50' : ''
+              }`}
           >
             {index + 1}
           </button>
         ))}
       </div>
+      {isModalOpen && (
+      <ProjectModal project={selectedProject} onClose={closeModal} />
+    )}
     </div>
   )
 }

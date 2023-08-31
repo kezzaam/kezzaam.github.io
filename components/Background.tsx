@@ -85,13 +85,13 @@ export default function Background() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen space-y-6 mt-10">
+    <div className="flex flex-col justify-center items-center space-y-6 mt-36 h-auto">
       {/* <h2 className="text-3xl font-[600] text-left md:text-center">Background</h2> */}
       {/* accordion */}
-      <div className="sm:min-w-screen md:w-[90vw] lg:max-w-6xl px-8 mx-auto mt-2 space-y-1">
+      <div className="w-screen lg:max-w-6xl px-4 mx-auto my-2 space-y-1">
         <details id="about" open>
           <summary
-            className="font-semibold bg-blue-500 bg-opacity-75 px-4 py-2 sm:text-lg md:text-2xl cursor-pointer rounded-t-xl"
+            className="font-semibold bg-blue-500 bg-opacity-75 px-4 py-2 sm:text-sm md:text-2xl cursor-pointer rounded-t-xl"
             onClick={() => {
               toggleAccordion("about")
             }}>About me</summary>
@@ -148,13 +148,13 @@ export default function Background() {
               toggleAccordion("experience")
             }}>Experience</summary>
           {/* cards display */}
-          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 sm:p-4 md:p-10 bg-blue-500 bg-opacity-25">
+          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 md:p-10 bg-blue-500 bg-opacity-25">
             {jobs.map((job, index) => (
               <div
                 key={job.id}
                 onMouseEnter={() => handleMouseEnter(job.id)}
                 onMouseLeave={handleMouseLeave}
-                className={`card w-[320px] h-[320px] rounded-lg shadow overflow-hidden relative ${job.id === hovered ? 'hovered' : ''
+                className={`card w-[320px] h-[320px] mx-auto mt-2 rounded-lg shadow overflow-hidden relative ${job.id === hovered ? 'hovered' : ''
                   } ${index === currentIndex ? 'reveal' : 'hide'
                   }`}
               >
@@ -221,7 +221,7 @@ export default function Background() {
                 key={qualification.id}
                 onMouseEnter={() => handleMouseEnter(qualification.id)}
                 onMouseLeave={handleMouseLeave}
-                className={`card w-[320px] h-[320px] rounded-lg shadow overflow-hidden relative ${qualification.id === hovered ? 'hovered' : ''
+                className={`card w-[320px] h-[320px] mx-auto mt-2 rounded-lg shadow overflow-hidden relative ${qualification.id === hovered ? 'hovered' : ''
                   } ${index === currentIndex ? 'reveal' : 'hide'
                   }`}
               >

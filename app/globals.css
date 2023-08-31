@@ -21,7 +21,7 @@
   );
 }
 
-.body-dark .card {
+.body-dark .card, .body-dark .dropdown {
   background-color: var(--poseidon);
   border: 1px solid var(--darkcerulean);
 }
@@ -35,9 +35,9 @@
   );
 }
 
-.body-light .card {
+.body-light .card, .body-light .dropdown {
   background-color: #ffffff;
-
+  border: 1px solid #efefef;
 }
 
 .body-dark .hover-content {
@@ -62,7 +62,8 @@
     mix-blend-mode: multiply;
     background-repeat: repeat;
     pointer-events: none;
-    background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png")  }
+    background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");  
+    z-index: 100}
 
 
 /* page sections - home, resume, portfolio, contact */
@@ -85,6 +86,7 @@ section.active > div > * {
 }
 
 /* accordion */
+
 #tech div {
   font-size: 1.4rem;
 }
