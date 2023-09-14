@@ -19,7 +19,7 @@ export default function Home() {
     flex overflow-x-scroll snap-x snap-mandatory h-screen z-0
     ${scrollDirection === 'left' ? 'scroll-left' : 'scroll-right'}
     ${activeSection === "home" ? "active" : ""}
-  `;
+  `
 
   return (
     <main className={mainStyle}>

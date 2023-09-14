@@ -15,11 +15,13 @@ export default function Portfolio() {
       description:
         'A full stack educational, interactive resource for NZ naked eye stars with a focus on Māori astronomy and mythology.',
       display: <GuidingLight />,
-      link: '#',
       github: 'https://github.com/kezzaam/guidinglight',
       bgImage: '/images/nightskydark.jpg',
       techStack: ['NextJS', 'Typescript', 'Tailwind CSS', 'PrismaORM', 'MongoDB', 'NextAuth'],
       mockup: '/images/guidinglight_mockup.png',
+      videoURL: 'xB7_SUUcH8E',
+      features: [],
+      development: [],
     },
     {
       id: 2,
@@ -27,11 +29,13 @@ export default function Portfolio() {
       description:
         'A frontend React application focused on helping users log, track and interpret their dreams over time.',
       display: <Slumberjack />,
-      link: '#',
       github: 'https://github.com/kezzaam/slumberjack',
       bgImage: '/images/luciddreaming.jpg',
       techStack: ['NextJS', 'Typescript', 'Tailwind CSS', 'Firebase'],
       mockup: '/images/slumberjack_mockup.png',
+      videoURL: '',
+      features: [],
+      development: [],
     },
     {
       id: 3,
@@ -39,11 +43,13 @@ export default function Portfolio() {
       description:
         'A fun, interactive card deck for referencing Wizarding World spells from the Harry Potter API.',
       display: <Spelldeck />,
-      link: '#',
       github: 'https://github.com/kezzaam/spelldeck',
       bgImage: '/images/spelldeck.jpg',
       techStack: ['HTML', 'Javascript', 'CSS', 'Bootstrap', 'Express', 'NodeJS'],
       mockup: '/images/spelldeck_mockup.png',
+      videoURL: '',
+      features: [],
+      development: [],
     },
   ]
 
@@ -72,12 +78,12 @@ export default function Portfolio() {
   }
 
   return (
+    <>
     <div className="flex flex-col justify-center items-center h-screen space-y-6">
       {/* <h2 className="text-3xl font-[600] text-left md:text-center">Latest work</h2> */}
       <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4">
         {projects.map((project, index) => (
-          <Link
-            href={project.link}
+          <div
             key={project.id}
             onMouseEnter={() => handleMouseEnter(project.id)}
             onMouseLeave={handleMouseLeave}
@@ -119,7 +125,7 @@ export default function Portfolio() {
                 </a>
               </div>
             )}
-          </Link>
+          </div>
         ))}
       </div>
       <div className="pagination mt-4 md:hidden">
@@ -134,9 +140,10 @@ export default function Portfolio() {
           </button>
         ))}
       </div>
-      {isModalOpen && (
+    </div>
+    {isModalOpen && (
       <ProjectModal project={selectedProject} onClose={closeModal} />
     )}
-    </div>
+    </>
   )
 }
