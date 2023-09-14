@@ -16,7 +16,6 @@ export default function Navigation({ menuOpen, toggleMenu }: any) {
     return (
         <nav className={`flex-grow sm:flex sm:items-center sm:space-x-10 relative`}>
             {/* Hamburger menu for small screens */}
-            {/* Hamburger menu for small screens */}
             <button className="transition-all sm:hidden mt-3 hover:text-blue-500 active:blue-500 z-50" onClick={toggleMenu}>
                 {menuOpen ? <FontAwesomeIcon icon={faTimes} size="xl"/> : <Menu />}
             </button>
@@ -37,13 +36,13 @@ export default function Navigation({ menuOpen, toggleMenu }: any) {
             {/* Dropdown menu for small screens */}
             <ul className={`absolute  sm:static top-0 left-10 flex flex-col sm:flex-row uppercase space-y-3 sm:space-y-0 sm:space-x-10 text-l tracking-wide ${menuOpen ? 'block' : 'hidden'} md:hidden z-0`}>
                 <li>
-                    <Link href="#background" className={activeSection === 'background' ? activeStyle : linkStyle}>Background</Link>
+                    <Link href="#background" onClick={toggleMenu} className={activeSection === 'background' ? activeStyle : linkStyle}>Background</Link>
                 </li>
                 <li>
-                    <Link href="#portfolio" className={activeSection === 'portfolio' ? activeStyle : linkStyle}>Portfolio</Link>
+                    <Link href="#portfolio" onClick={toggleMenu} className={activeSection === 'portfolio' ? activeStyle : linkStyle}>Portfolio</Link>
                 </li>
                 <li>
-                    <Link href="#contact" className={activeSection === 'contact' ? activeStyle : linkStyle}>Contact</Link>
+                    <Link href="#contact" onClick={toggleMenu} className={activeSection === 'contact' ? activeStyle : linkStyle}>Contact</Link>
                 </li>
             </ul>
         </nav>
